@@ -114,14 +114,6 @@ class ConnectFourEngine:
     
     def get_best_move(self) -> str:
         valid_moves =self.game.get_valid_locations()
-        
-        for column in valid_moves:
-            board = self.get_game_state()
-            for row in range(len(board[0])):
-                if self.board[column][row] == 0:
-                    if self.game.check_win(row, column):
-                        return column
-                    break
                 
         return str(random.choice(valid_moves))
     
