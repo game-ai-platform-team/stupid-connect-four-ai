@@ -125,20 +125,15 @@ if __name__ == "__main__":
     game.print_board()
     while not game.game_over:
         try:
-            col = int(input("Player {} - Choose a column: ".format(game.player)))
-            if not (0 <= col < game.columns):
-                raise ValueError
-            if game.is_valid_location(col):
+            move = input("Player {} - Choose a column: ".format(game.player))
+            if move != "":
+                col = int(move)
                 game.drop_piece(col)
-                print("MOVE: " + str(col))
-                game.print_board()
-                if game.check_win(game.rows - 1, col):
-                    print("Player {} wins!".format(game.player))
-                    break
-                if game.is_board_full():
-                    print("It's a draw!")
-                    break
-            else:
-                print("Invalid move. Try again.")
+            legal_moves = game.get_valid_locations
+
+            choice = random.choice(legal_moves)
+            game.drop_piece(choice)
+            print("MOVE: " + str(choice))
+            
         except ValueError:
             print("Invalid input. Please enter a valid column number.")
