@@ -125,7 +125,7 @@ if __name__ == "__main__":
     game.print_board()
     while not game.game_over:
         try:
-            move = input("Player {} - Choose a column: ".format(game.player))
+            move = input()
             if move != "":
                 col = int(move)
                 game.drop_piece(col)
