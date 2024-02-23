@@ -1,4 +1,3 @@
-import random
 import numpy as np
 
 class ConnectFour:
@@ -102,32 +101,29 @@ class ConnectFour:
         return np.all(self.board != 0)
 
 
+# Example usage:
+game = ConnectFour()
+game.print_board()
+while not game.game_over:
+    try:
+        col = int(input("Player {} - Choose a column: ".format(game.player)))
+        if not (0 <= col < game.columns):
+            raise ValueError
+        if game.is_valid_location(col):
+            game.drop_piece(col)
+            game.print_board()
+            if game.check_win(game.rows - 1, col):
+                print("Player {} wins!".format(game.player))
+                break
+            if game.is_board_full():
+                print("It's a draw!")
+                break
+        else:
+            print("Invalid move. Try again.")
+    except ValueError:
+        print("Invalid input. Please enter a valid column number.")
 
-class ConnectFourEngine:
-    def __init__(self, rows=6, columns=7):
-        self.rows = rows
-        self.columns = columns
-        self.game = ConnectFour(rows, columns)
-    
-    def make_move(self, move:str):
-        self.game.drop_piece(int(move))
-    
-    def get_best_move(self) -> str:
-        valid_moves =self.game.get_valid_locations()
-        
-        for column in valid_moves:
-            board = self.get_game_state()
-            for row in range(len(board[0])):
-                if self.board[column][row] == 0:
-                    if self.game.check_win(row, column):
-                        return column
-                    break
-                
-        return str(random.choice(valid_moves))
-    
-    def get_game_state(self) -> list[list[int]]:
-        return self.game.get_board
- 
+
 if __name__ == "__main__":
     game = ConnectFour()
     game.print_board()
@@ -138,7 +134,6 @@ if __name__ == "__main__":
                 raise ValueError
             if game.is_valid_location(col):
                 game.drop_piece(col)
-                print("MOVE: " + str(col))
                 game.print_board()
                 if game.check_win(game.rows - 1, col):
                     print("Player {} wins!".format(game.player))
