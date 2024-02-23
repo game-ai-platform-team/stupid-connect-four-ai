@@ -129,7 +129,7 @@ if __name__ == "__main__":
             if move != "":
                 col = int(move)
                 game.drop_piece(col)
-            legal_moves = game.get_valid_locations
+            legal_moves = game.get_valid_locations()
 
             choice = random.choice(legal_moves)
             game.drop_piece(choice)
