@@ -98,6 +98,13 @@ class ConnectFour:
                 valid_locations.append(col)
         return valid_locations
 
+    def random_closest_to_3(numbers):
+        weights = [1 / (abs(num - 3) + 1) for num in numbers]
+        total_weight = sum(weights)
+        probabilities = [weight / total_weight for weight in weights]
+
+        return random.choices(numbers, probabilities)[0]
+
     def is_board_full(self):
         return np.all(self.board != 0)
 
@@ -131,7 +138,7 @@ if __name__ == "__main__":
                 game.drop_piece(col)
             legal_moves = game.get_valid_locations()
 
-            choice = random.choice(legal_moves)
+            choice = ConnectFour.random_closest_to_3(legal_moves)
             game.drop_piece(choice)
             print("MOVE: " + str(choice))
             
