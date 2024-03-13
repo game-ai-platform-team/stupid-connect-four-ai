@@ -119,6 +119,18 @@ class ConnectFourEngine:
     
     def get_game_state(self) -> list[list[int]]:
         return self.game.get_board
+    
+    def closest_to_3(numbers):
+        closest = None
+        min_difference = float('inf')
+
+        for num in numbers:
+            difference = abs(num - 3)
+            if difference < min_difference:
+                closest = num
+                min_difference = difference
+
+        return closest
  
 if __name__ == "__main__":
     game = ConnectFour()
@@ -131,7 +143,7 @@ if __name__ == "__main__":
                 game.drop_piece(col)
             legal_moves = game.get_valid_locations()
 
-            choice = random.choice(legal_moves)
+            choice = ConnectFourEngine.closest_to_3(legal_moves)
             game.drop_piece(choice)
             print("MOVE: " + str(choice))
             
