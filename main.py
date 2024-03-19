@@ -10,15 +10,15 @@ if __name__ == "__main__":
 
     while judge.is_game_over() == GameState.CONTINUE:
         try:
-            opponent_move = input()
-
-            if opponent_move != "":
-                engine.add_move(opponent_move)
-
             move = engine.get_random_move()
             engine.add_move(move)
 
             print("MOVE: " + str(move))
+
+            opponent_move = input()
+
+            if opponent_move != "":
+                engine.add_move(opponent_move)
 
         except ValueError:
             print("Invalid input. Please enter a valid column number.")
