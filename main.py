@@ -7,8 +7,10 @@ if __name__ == "__main__":
         read = input().split(":")
         print(f"Read input: {read}")
         tag = read[0]
+        data = read[1]
         print(f"Columns: {count}")
         if tag == "PLAY":
+            print("finding move...")
             while True:
                 num = random.randint(0, 6)
                 if count[num] < 6:
@@ -21,5 +23,10 @@ if __name__ == "__main__":
         elif tag == "MOVE":
             op_move = read[1]
             count[int(op_move)] += 1
+        elif tag == "BOARD":
+            count = {i: 0 for i in range(7)}
+            for i in data.split(","):
+                count[int(i)] += 1
+            print(f"Board set to: {count}")
         elif tag == "RESET":
             count = {i: 0 for i in range(7)}
