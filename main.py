@@ -25,8 +25,9 @@ if __name__ == "__main__":
             count[int(op_move)] += 1
         elif tag == "BOARD":
             count = {i: 0 for i in range(7)}
-            for i in data.split(","):
-                count[int(i)] += 1
+            if len(data) > 0:
+                for i in data.split(","):
+                    count[int(i)] += 1
             print(f"Board set to: {count}")
         elif tag == "RESET":
             count = {i: 0 for i in range(7)}
