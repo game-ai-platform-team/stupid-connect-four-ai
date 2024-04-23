@@ -15,9 +15,10 @@ if __name__ == "__main__":
                         print(f"MOVE:{i}")
                         count[i] += 1
                         break
+                else:
+                    print("MOVE: -1")
+                    print("Error: No moves left!")
 
-                print("MOVE: -1")
-                print("Error: No moves left!")
             case "MOVE":
                 op_move = data
                 count[int(op_move)] += 1
