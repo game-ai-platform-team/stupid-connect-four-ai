@@ -2,7 +2,7 @@
 name = "stupid-connect-four-ai"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["game-ai-platform-team"]
 license = "MIT License"
 readme = "README.md"
 
